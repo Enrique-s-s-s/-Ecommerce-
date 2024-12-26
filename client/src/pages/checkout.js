@@ -62,8 +62,8 @@ function CheckoutPage() {
         <h1 className="text-center mb-4">Checkout</h1>
 
         {orderPlaced ? (
-          <div className="alert alert-success text-center">
-            <h3>Thank you for your order, {customerDetails.name}!</h3>
+          <div className="alert alert-success bg-dark text-center">
+            <h3 className="text-gray">Thank you for your order, {customerDetails.name}!</h3>
             <p>Your order has been placed successfully.</p>
           </div>
         ) : (

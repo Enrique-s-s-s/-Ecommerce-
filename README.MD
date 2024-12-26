@@ -13,10 +13,6 @@ This is a full-stack e-commerce web application built with **React**, **Node.js*
 - **User Profile**: View purchase history and account details.
 - **Authentication**: Secure registration and login using **JWT**.
 
-### 🛠️ **Admin Features**
-- **Product Management**: Add, update, or remove products.
-- **Order Management**: Track and manage customer orders.
-
 ### 📱 **Responsive Design**
 - Fully responsive design optimized for desktops, tablets, and mobile devices.
 
@@ -26,8 +22,6 @@ This is a full-stack e-commerce web application built with **React**, **Node.js*
 
 ### **Frontend**
 - **React.js**: Core frontend framework.
-- **React Router**: Client-side routing.
-- **Bootstrap 5**: Responsive UI and styling.
 
 ### **Backend**
 - **Node.js**: JavaScript runtime.

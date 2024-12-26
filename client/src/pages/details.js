@@ -57,7 +57,7 @@ function ProductDetailPage() {
   if (error) return <div className="error-message">{error}</div>;
 
   return (
-    <div className="product-detail-page">
+    <div className="product-detail-page vh-100">
       <Helmet
         title={product.name || "Product Details"}
         description={product.description || "Detailed view of the product"}

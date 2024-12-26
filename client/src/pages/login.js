@@ -65,12 +65,12 @@ function LoginPage() {
                 className="form-input"
               />
             </div>
-            <button type="submit" className="button">
+            <button type="submit" className="button mt-4">
               Login
             </button>
-            <div className="auth-link">
-              Don't have an account?{" "}
-              <a href="/register" className="register-link">
+            <div className="auth-link-box">
+              Don't have an account?
+              <a href="/register" className="auth-link">
                 Register here
               </a>
             </div>

@@ -108,12 +108,12 @@ function RegisterPage() {
                 className="form-input"
               />
             </div>
-            <button type="submit" className="button">
+            <button type="submit" className="button mt-4">
               Register
             </button>
-            <div className="auth-link">
-              Already have an account?{" "}
-              <a href="/login" className="login-link">
+            <div className="auth-link-box">
+              Already have an account?
+              <a href="/login" className="auth-link">
                 Login here
               </a>
             </div>
