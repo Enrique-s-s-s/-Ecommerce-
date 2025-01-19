@@ -1,0 +1,709 @@
+/* -----------------------------------
+      Global Variables
+----------------------------------- */
+:root {
+  --primary-color: #00adb5; 
+  --secondary-color: #b0bec5; 
+  --text-color: #eeeeee; 
+  --background-color: #121212; 
+  --accent-color: #00fff5;  
+  --hover-accent: #03e9f4; 
+  --card-bg-color: #1e1e1e; 
+  --card-shadow: rgba(0, 0, 0, 0.6);
+  --input-bg-color: #2c2c2c; 
+  --input-border-color: #444;
+  --border-radius: 12px;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+  --transition-speed: 0.3s;
+}
+
+/* -----------------------------------
+      Reset and Global Styles
+----------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* -----------------------------------
+      Typography
+----------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+p {
+  color: var(--secondary-color);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+
+/* -----------------------------------
+      Cards
+----------------------------------- */
+.card {
+  background: var(--card-bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 12px var(--card-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all var(--transition-speed);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px var(--card-shadow);
+}
+
+.card-header, .card-footer {
+  background-color: var(--input-bg-color);
+  padding: 10px;
+  color: var(--text-color);
+  font-weight: 600;
+  border-bottom: 1px solid var(--input-border-color);
+}
+
+.card-body {
+  padding: 15px 10px;
+  color: var(--text-color);
+}
+
+/* -----------------------------------
+      Forms and Inputs
+----------------------------------- */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--input-border-color);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 10px var(--hover-accent);
+}
+
+::placeholder {
+  color: var(--secondary-color);
+  opacity: 0.7;
+}
+
+/* -----------------------------------
+      Loading Spinner
+----------------------------------- */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background-color); 
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid transparent; 
+  border-top: 5px solid var(--primary-color); 
+  border-left: 5px solid var(--accent-color); 
+  border-radius: 50%;
+  animation: spin 1.2s ease-in-out infinite, glow 1.2s ease-in-out infinite;
+  position: relative;
+}
+
+.spinner::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--hover-accent);
+  border-radius: 50%;
+  animation: spin-reverse 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--hover-accent);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--hover-accent), 0 0 40px var(--accent-color);
+  }
+}
+
+.loading-container p {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* -----------------------------------
+      Hero Section
+----------------------------------- */
+.hero {
+  background: url('../../public/index.hero.jpg') center / cover fixed;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.85);
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  color: var(--text-color);
+}
+
+.hero-description {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  color: var(--text-color);
+}
+
+.cta-buttons button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 50px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.cta-buttons button:first-child {
+  margin-right: 25px;
+  background: color-mix(in srgb, var(--accent-color) 55%, rgb(53, 53, 53) 25%);
+  color: var(--text-color);
+}
+
+.cta-buttons button:first-child:hover {
+  background: color-mix(in srgb, var(--accent-color) 75%, rgb(53, 53, 53) 25%);
+}
+
+.cta-buttons button:last-child {
+  background: color-mix(in srgb, var(--secondary-color) 55%, rgb(53, 53, 53) 25%);
+  color: var(--background-color);
+  border: 2px solid var(--secondary-color);
+}
+
+.cta-buttons button:last-child:hover {
+  background: color-mix(in srgb, var(--secondary-color) 5%, rgb(53, 53, 53) 85%);
+  color: var(--secondary-color);
+}
+
+/* -----------------------------------
+      Product Cards
+----------------------------------- */
+.product-card {
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #444;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: color-mix(in srgb, var(--text-color) 75%, rgb(46, 46, 46) 25%);
+}
+
+.product-price {
+  color: color-mix(in srgb, var(--accent-color) 75%, rgb(46, 46, 46) 25%);
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color: color-mix(in srgb, var(--accent-color) 45%, rgb(46, 46, 46) 25%);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--hover-accent) 65%, rgb(46, 46, 46) 25%);
+}
+
+.alert-danger {
+  background-color: #422121;
+  color: #f76a6a;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* -----------------------------------
+      Auth Forms
+----------------------------------- */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-box {
+  background-color: var(--card-bg-color);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 16px var(--card-shadow);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.8s ease-in-out;
+  position: relative;
+}
+
+.auth-box .auth-title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.auth-box .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.auth-box .form-input {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  transition: border-color var(--transition-speed);
+}
+
+.auth-box .form-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+.auth-box .button {
+  width: 100%;
+  padding: 12px;
+  background-color: color-mix(in srgb, var(--primary-color) 65%, rgb(69, 67, 67) 35%);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.auth-box .button:hover {
+  background-color: color-mix(in srgb, var(--hover-accent) 45%, rgb(202, 202, 202) 35%);
+  transform: translateY(-2px);
+}
+
+.auth-box .auth-link-box {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+.auth-box .auth-link {
+  margin-left: 5px;
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: color var(--transition-speed);
+}
+
+.auth-box .auth-link:hover {
+  color: var(--hover-accent);
+}
+
+/* -----------------------------------
+      Back Home Link
+----------------------------------- */
+.auth-container .back-home {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.auth-container .back-home::before {
+  content: "← Back to Home";
+}
+
+.auth-container .back-home:hover {
+  color: var(--hover-accent);
+  transform: translateX(-5px);
+}
+
+/* -----------------------------------
+      Alert Styling
+----------------------------------- */
+.auth-box .alert {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-box .alert-danger {
+  background-color: #d32f2f;
+  color: #ffffff;
+}
+
+/* -----------------------------------
+      Fade-In Animation
+----------------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* -----------------------------------
+      Cart Page Styles
+----------------------------------- */
+
+.cart-page,
+.checkout-page{
+  min-height: 100vh;
+}
+
+.cart-item {
+  display:flex;
+  flex-direction: row;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.cart-item img{
+  width: 200px;
+  margin-right: 25px;
+}
+.cart-item-name {
+  color: var(--text-color);
+}
+
+.cart-summary h3 {
+  color: var(--accent-color);
+}
+
+.cart-summary .btn {
+  background: var(--primary-color);
+}
+
+.cart-summary .btn:hover {
+  background: var(--hover-accent);
+}
+
+/* -----------------------------------
+      Profile Page Styles
+----------------------------------- */
+
+.profile-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: scale(1.02);
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #6f42c1, #b085f5);
+  color: #ffffff;
+  border-bottom: 3px solid #6f42c1;
+  border-radius: 12px 12px 0 0;
+}
+
+.profile-header h3 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.profile-header p {
+  font-size: 1rem;
+}
+
+.profile-card  .card-body {
+  background-color: #ffffff;
+  padding: 1.5rem;
+}
+
+.profile-card  .card-body h4 {
+  color: #6f42c1;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.table-responsive {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.table {
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #6f42c1;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fafafa;
+}
+
+.table-bordered {
+  border: 1px solid #e0e0e0;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #e0e0e0;
+}
+
+.table-sm th,
+.table-sm td {
+  font-size: 0.85rem;
+  padding: 8px;
+}
+
+.table-responsive::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #6f42c1;
+  border-radius: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.profile-card  .card-footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  padding: 1rem;
+}
+
+.profile-card  .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  font-weight: bold;
+}
+
+.profile-card  .btn-danger:hover {
+  background-color: #bb2d3b;
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+@media (max-width: 768px) {
+  .profile-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+
+/* -----------------------------------
+      General Buttons
+----------------------------------- */
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--hover-accent);
+}
+
+/* -----------------------------------
+      Responsive Design Adjustments
+----------------------------------- */
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header h3 {
+    font-size: 1.5em;
+  }
+
+  .profile-header p {
+    font-size: 1em;
+  }
+
+  .purchase-card {
+    padding: 12px;
+  }
+
+  .purchase-card p {
+    font-size: 0.9em;
+  }
+}
+
